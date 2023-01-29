@@ -58,12 +58,12 @@ class _ExampleState extends State<Example> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Center(
-                child: Text('Background color',
+                child: Text(
+                  'Background color',
                   style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold
-                  ),
+                      fontSize: 16,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold),
                 ),
               ),
               const SizedBox(height: 20),
@@ -95,16 +95,16 @@ class _ExampleState extends State<Example> {
                       context,
                       MaterialPageRoute(
                           builder: (context) => StoriesEditor(
-                            giphyKey: '[HERE YOU GIPHY API KEY]',
-                            //fontFamilyList: const ['Shizuru', 'Aladin'],
-                            galleryThumbnailQuality: 300,
-                            editorBackgroundColor: colors[colorIndex],
-                            //isCustomFontList: true,
-                            onDone: (uri) {
-                              debugPrint(uri);
-                              Share.shareFiles([uri]);
-                            },
-                          )));
+                                giphyKey: '[HERE YOU GIPHY API KEY]',
+                                //fontFamilyList: const ['Shizuru', 'Aladin'],
+                                galleryThumbnailQuality: 300,
+                                editorBackgroundColor: colors[colorIndex],
+                                //isCustomFontList: true,
+                                onDone: (uri) {
+                                  debugPrint(uri);
+                                  Share.shareFiles([uri]);
+                                },
+                              )));
                 },
                 child: const Text('Open Stories Editor'),
               ),
@@ -132,16 +132,17 @@ class _ExampleState extends State<Example> {
             height: 40,
             width: 40,
             child: Center(
-              child: color == colors[colorIndex] ? const Icon(
-                Icons.check,
-                size: 20,
-                color: Colors.white,
-              ) : Container(),
+              child: color == colors[colorIndex]
+                  ? const Icon(
+                      Icons.check,
+                      size: 20,
+                      color: Colors.white,
+                    )
+                  : Container(),
             ),
           ),
         ),
       ),
     );
   }
-
 }

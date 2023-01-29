@@ -63,7 +63,7 @@ Future<bool> exitDialog({
             padding:
                 const EdgeInsets.only(top: 25, bottom: 5, right: 20, left: 20),
             alignment: Alignment.center,
-            constraints: BoxConstraints(minHeight: 280, maxHeight: 330),
+            constraints: const BoxConstraints(minHeight: 280, maxHeight: 330),
             decoration: BoxDecoration(
                 shape: BoxShape.rectangle,
                 color: HexColor.fromHex('#262626'),

@@ -20,7 +20,7 @@ class WidgetRecorderController extends ChangeNotifier {
   final GlobalKey _containerKey;
 
   /// frame callback
-  final SchedulerBinding _binding = SchedulerBinding.instance!;
+  final SchedulerBinding _binding = SchedulerBinding.instance;
 
   /// save frames
   final List<ui.Image> _frames = [];
@@ -112,7 +112,7 @@ class WidgetRecorderController extends ChangeNotifier {
     var tempDir = await getTemporaryDirectory();
     var tempDirPath = tempDir.path;
     dir = '$tempDirPath/stories_editor';
-    final res = await Directory(dir).create(recursive: true);
+    await Directory(dir).create(recursive: true);
 
     /// delete last directory
     Directory myDir = Directory(dir);
