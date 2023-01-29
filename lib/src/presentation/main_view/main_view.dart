@@ -150,8 +150,7 @@ class _MainViewState extends State<MainView> {
   bool _inAction = false;
 
   /// screen size
-  final _screenSize =
-      MediaQueryData.fromWindow(WidgetsBinding.instance!.window);
+  final _screenSize = MediaQueryData.fromWindow(WidgetsBinding.instance.window);
 
   /// recorder controller
   final WidgetRecorderController _recorderController =
@@ -159,7 +158,7 @@ class _MainViewState extends State<MainView> {
 
   @override
   void initState() {
-    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       var _control = Provider.of<ControlNotifier>(context, listen: false);
 
       /// initialize control variable provider
@@ -485,7 +484,7 @@ class _MainViewState extends State<MainView> {
                               ? const NeverScrollableScrollPhysics()
                               : const ScrollPhysics(),
                           pathList: (path) {
-                            controlNotifier.mediaPath = path[0]['path'];
+                            controlNotifier.mediaPath = path[0].path!;
                             if (controlNotifier.mediaPath.isNotEmpty) {
                               itemProvider.draggableWidget.insert(
                                   0,
@@ -634,7 +633,7 @@ class _MainViewState extends State<MainView> {
 
     /// show close dialog
     else if (!controlNotifier.isTextEditing && !controlNotifier.isPainting) {
-      print(widget.discardDialogTitleText);
+      debugPrint(widget.discardDialogTitleText);
       return widget.onBackPress ??
           exitDialog(
             context: context,

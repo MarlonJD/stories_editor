@@ -4,7 +4,6 @@ import 'package:ffmpeg_kit_flutter_min_gpl/ffmpeg_kit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:stories_editor/src/presentation/utils/constants/directory_path.dart';
 import 'package:stories_editor/src/presentation/utils/constants/render_type.dart';
 
 class FfmpegProvider with ChangeNotifier {
