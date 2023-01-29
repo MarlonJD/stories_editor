@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:modal_gif_picker/modal_gif_picker.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:stories_editor/src/domain/models/editable_items.dart';
 import 'package:stories_editor/src/domain/providers/notifiers/control_provider.dart';
@@ -13,29 +12,29 @@ import 'package:stories_editor/src/presentation/utils/constants/item_type.dart';
 import 'package:stories_editor/src/presentation/widgets/animated_onTap_button.dart';
 
 /// create item of type GIF
-Future createGiphyItem(
-    {required BuildContext context, required giphyKey}) async {
-  final _editableItem =
-      Provider.of<DraggableWidgetNotifier>(context, listen: false);
-  _editableItem.giphy = await ModalGifPicker.pickModalSheetGif(
-    context: context,
-    apiKey: giphyKey,
-    rating: GiphyRating.r,
-    sticker: true,
-    backDropColor: Colors.black,
-    crossAxisCount: 3,
-    childAspectRatio: 1.2,
-    topDragColor: Colors.white.withOpacity(0.2),
-  );
+// Future createGiphyItem(
+//     {required BuildContext context, required giphyKey}) async {
+//   final _editableItem =
+//       Provider.of<DraggableWidgetNotifier>(context, listen: false);
+//   _editableItem.giphy = await ModalGifPicker.pickModalSheetGif(
+//     context: context,
+//     apiKey: giphyKey,
+//     rating: GiphyRating.r,
+//     sticker: true,
+//     backDropColor: Colors.black,
+//     crossAxisCount: 3,
+//     childAspectRatio: 1.2,
+//     topDragColor: Colors.white.withOpacity(0.2),
+//   );
 
-  /// create item of type GIF
-  if (_editableItem.giphy != null) {
-    _editableItem.draggableWidget.add(EditableItem()
-      ..type = ItemType.gif
-      ..gif = _editableItem.giphy!
-      ..position = const Offset(0.0, 0.0));
-  }
-}
+//   /// create item of type GIF
+//   if (_editableItem.giphy != null) {
+//     _editableItem.draggableWidget.add(EditableItem()
+//       ..type = ItemType.gif
+//       ..gif = _editableItem.giphy!
+//       ..position = const Offset(0.0, 0.0));
+//   }
+// }
 
 /// custom exit dialog
 Future<bool> exitDialog({
@@ -63,7 +62,7 @@ Future<bool> exitDialog({
             padding:
                 const EdgeInsets.only(top: 25, bottom: 5, right: 20, left: 20),
             alignment: Alignment.center,
-            constraints: const BoxConstraints(minHeight: 280, maxHeight: 330),
+            constraints: BoxConstraints(minHeight: 280, maxHeight: 330),
             decoration: BoxDecoration(
                 shape: BoxShape.rectangle,
                 color: HexColor.fromHex('#262626'),
@@ -216,6 +215,10 @@ _resetDefaults({required BuildContext context}) {
 
 _dispose({required context, required message}) {
   _resetDefaults(context: context);
-  Fluttertoast.showToast(msg: message);
+  Get.snackbar(
+    message,
+    message,
+    backgroundColor: Colors.blueAccent.withOpacity(0.3),
+  );
   Navigator.of(context).pop(true);
 }

@@ -30,7 +30,7 @@ class _TextEditorState extends State<TextEditor> {
   String lastSequenceList = '';
   @override
   void initState() {
-    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       final _editorNotifier =
           Provider.of<TextEditingNotifier>(widget.context, listen: false);
       _editorNotifier

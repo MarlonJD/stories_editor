@@ -12,6 +12,7 @@ import 'package:stories_editor/src/domain/providers/notifiers/rendering_notifier
 import 'package:stories_editor/src/domain/providers/notifiers/scroll_notifier.dart';
 import 'package:stories_editor/src/domain/providers/notifiers/text_editing_notifier.dart';
 import 'package:stories_editor/src/presentation/main_view/main_view.dart';
+import 'package:loader_overlay/loader_overlay.dart';
 
 export 'package:stories_editor/stories_editor.dart';
 
@@ -32,7 +33,7 @@ class StoriesEditor extends StatefulWidget {
   final Widget? middleBottomWidget;
 
   /// on done
-  final Function(String)? onDone;
+  final Function(String, int)? onDone;
 
   /// on done button Text
   final Widget? onDoneButtonStyle;
@@ -77,7 +78,14 @@ class StoriesEditor extends StatefulWidget {
   final String? recordingSuccessText;
   final String? recordingErrorText;
 
-  const StoriesEditor({
+  // Gallery and camera texts for i18n
+  final String? galleryText;
+  final String? cameraText;
+
+  // "Empty notice cannot be published" for i18n
+  final String? emptyNoticeText;
+
+  StoriesEditor({
     Key? key,
     required this.giphyKey,
     required this.onDone,
@@ -106,6 +114,9 @@ class StoriesEditor extends StatefulWidget {
     this.renderingText,
     this.recordingSuccessText,
     this.recordingErrorText,
+    this.galleryText,
+    this.cameraText,
+    this.emptyNoticeText,
   }) : super(key: key);
 
   @override
@@ -144,35 +155,40 @@ class _StoriesEditorState extends State<StoriesEditor> {
         ChangeNotifierProvider(create: (_) => TextEditingNotifier()),
         ChangeNotifierProvider(create: (_) => RenderingNotifier()),
       ],
-      child: MainView(
-        giphyKey: widget.giphyKey,
-        onDone: widget.onDone,
-        fontFamilyList: widget.fontFamilyList,
-        isCustomFontList: widget.isCustomFontList,
-        middleBottomWidget: widget.middleBottomWidget,
-        gradientColors: widget.gradientColors,
-        colorList: widget.colorList,
-        onDoneButtonStyle: widget.onDoneButtonStyle,
-        onBackPress: widget.onBackPress,
-        editorBackgroundColor: widget.editorBackgroundColor,
-        galleryThumbnailQuality: widget.galleryThumbnailQuality,
-        discardDialogTitleText: widget.discardDialogTitleText,
-        discardDialogDetailText: widget.discardDialogDetailText,
-        discardDialogDiscardButtonText: widget.discardDialogDiscardButtonText,
-        discardDialogSaveDraftButtonText:
-            widget.discardDialogSaveDraftButtonText,
-        discardDialogCancelButtonText: widget.discardDialogCancelButtonText,
-        tapToTypeText: widget.tapToTypeText,
-        doneButtonText: widget.doneButtonText,
-        shareButtonText: widget.shareButtonText,
-        saveDraftAlertSavedText: widget.saveDraftAlertSavedText,
-        saveDraftAlertErrorText: widget.saveDraftAlertErrorText,
-        saveDraftAlertEmptyText: widget.saveDraftAlertEmptyText,
-        framesText: widget.framesText,
-        prepairingText: widget.prepairingText,
-        renderingText: widget.renderingText,
-        recordingSuccessText: widget.recordingSuccessText,
-        recordingErrorText: widget.recordingErrorText,
+      child: LoaderOverlay(
+        child: MainView(
+          giphyKey: widget.giphyKey,
+          onDone: widget.onDone,
+          fontFamilyList: widget.fontFamilyList,
+          isCustomFontList: widget.isCustomFontList,
+          middleBottomWidget: widget.middleBottomWidget,
+          gradientColors: widget.gradientColors,
+          colorList: widget.colorList,
+          onDoneButtonStyle: widget.onDoneButtonStyle,
+          onBackPress: widget.onBackPress,
+          editorBackgroundColor: widget.editorBackgroundColor,
+          galleryThumbnailQuality: widget.galleryThumbnailQuality,
+          discardDialogTitleText: widget.discardDialogTitleText,
+          discardDialogDetailText: widget.discardDialogDetailText,
+          discardDialogDiscardButtonText: widget.discardDialogDiscardButtonText,
+          discardDialogSaveDraftButtonText:
+              widget.discardDialogSaveDraftButtonText,
+          discardDialogCancelButtonText: widget.discardDialogCancelButtonText,
+          tapToTypeText: widget.tapToTypeText,
+          doneButtonText: widget.doneButtonText,
+          shareButtonText: widget.shareButtonText,
+          saveDraftAlertSavedText: widget.saveDraftAlertSavedText,
+          saveDraftAlertErrorText: widget.saveDraftAlertErrorText,
+          saveDraftAlertEmptyText: widget.saveDraftAlertEmptyText,
+          framesText: widget.framesText,
+          prepairingText: widget.prepairingText,
+          renderingText: widget.renderingText,
+          recordingSuccessText: widget.recordingSuccessText,
+          recordingErrorText: widget.recordingErrorText,
+          galleryText: widget.galleryText,
+          cameraText: widget.cameraText,
+          emptyNoticeText: widget.emptyNoticeText,
+        ),
       ),
     );
   }

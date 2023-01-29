@@ -1,1 +1,5 @@
-enum ItemType { image, text, video, gif }
+enum ItemType {
+  image,
+  text,
+  video, //gif
+}

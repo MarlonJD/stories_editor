@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:stories_editor/src/domain/providers/notifiers/control_provider.dart';
 import 'package:stories_editor/src/domain/providers/notifiers/draggable_widget_notifier.dart';
@@ -14,7 +14,7 @@ import 'package:stories_editor/src/presentation/widgets/tool_button.dart';
 class TopTools extends StatefulWidget {
   final GlobalKey contentKey;
   final BuildContext context;
-  final Function renderWidget;
+  final Function? renderWidget;
   final String? discardDialogTitleText;
   final String? discardDialogDetailText;
   final String? discardDialogDiscardButtonText;
@@ -27,7 +27,7 @@ class TopTools extends StatefulWidget {
     Key? key,
     required this.contentKey,
     required this.context,
-    required this.renderWidget,
+    this.renderWidget,
     this.discardDialogTitleText,
     this.discardDialogDetailText,
     this.discardDialogDiscardButtonText,
@@ -114,16 +114,16 @@ class _TopToolsState extends State<TopTools> {
                       if (paintingNotifier.lines.isNotEmpty ||
                           itemNotifier.draggableWidget.isNotEmpty) {
                         for (var element in itemNotifier.draggableWidget) {
-                          if (element.type == ItemType.gif ||
-                              element.animationType != TextAnimationType.none) {
-                            setState(() {
-                              _createVideo = true;
-                            });
-                          }
+                          // if (element.type == ItemType.gif ||
+                          //     element.animationType != TextAnimationType.none) {
+                          //   setState(() {
+                          //     _createVideo = true;
+                          //   });
+                          // }
                         }
                         if (_createVideo) {
                           debugPrint('creating video');
-                          await widget.renderWidget();
+                          // await widget.renderWidget();
                         } else {
                           debugPrint('creating image');
                           var response = await takePicture(
@@ -131,12 +131,18 @@ class _TopToolsState extends State<TopTools> {
                               context: context,
                               saveToGallery: true);
                           if (response) {
-                            Fluttertoast.showToast(
-                                msg: widget.saveDraftAlertSavedText ??
-                                    'Successfully saved');
+                            Get.snackbar(
+                              widget.saveDraftAlertSavedText ??
+                                  'Successfully saved',
+                              '',
+                              backgroundColor: Colors.green.withOpacity(0.8),
+                            );
                           } else {
-                            Fluttertoast.showToast(
-                                msg: widget.saveDraftAlertErrorText ?? 'Error');
+                            Get.snackbar(
+                              widget.saveDraftAlertErrorText ?? 'Error',
+                              '',
+                              backgroundColor: Colors.red.withOpacity(0.8),
+                            );
                           }
                         }
                       }
@@ -144,16 +150,16 @@ class _TopToolsState extends State<TopTools> {
                         _createVideo = false;
                       });
                     }),
-                ToolButton(
-                    child: const ImageIcon(
-                      AssetImage('assets/icons/stickers.png',
-                          package: 'stories_editor'),
-                      color: Colors.white,
-                      size: 20,
-                    ),
-                    backGroundColor: Colors.black12,
-                    onTap: () => createGiphyItem(
-                        context: context, giphyKey: controlNotifier.giphyKey)),
+                // ToolButton(
+                //     backGroundColor: Colors.black12,
+                //     onTap: () => createGiphyItem(
+                //         context: context, giphyKey: controlNotifier.giphyKey),
+                //     child: const ImageIcon(
+                //       AssetImage('assets/icons/stickers.png',
+                //           package: 'stories_editor'),
+                //       color: Colors.white,
+                //       size: 20,
+                //     )),
                 ToolButton(
                     child: const ImageIcon(
                       AssetImage('assets/icons/draw.png',

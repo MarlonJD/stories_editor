@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:align_positioned/align_positioned.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:modal_gif_picker/modal_gif_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:stories_editor/src/domain/models/editable_items.dart';
 import 'package:stories_editor/src/domain/providers/notifiers/control_provider.dart';
@@ -110,28 +109,28 @@ class DraggableWidget extends StatelessWidget {
 
         break;
 
-      case ItemType.gif:
-        overlayWidget = SizedBox(
-          width: 150,
-          height: 150,
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              /// create Gif widget
-              Center(
-                child: Container(
-                  alignment: Alignment.center,
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.transparent),
-                  child: GiphyRenderImage.original(gif: draggableWidget.gif),
-                ),
-              ),
-            ],
-          ),
-        );
-        break;
+      // case ItemType.gif:
+      //   overlayWidget = SizedBox(
+      //     width: 150,
+      //     height: 150,
+      //     child: Stack(
+      //       alignment: Alignment.center,
+      //       children: [
+      //         /// create Gif widget
+      //         Center(
+      //           child: Container(
+      //             alignment: Alignment.center,
+      //             padding: const EdgeInsets.all(8),
+      //             decoration: BoxDecoration(
+      //                 borderRadius: BorderRadius.circular(10),
+      //                 color: Colors.transparent),
+      //             child: GiphyRenderImage.original(gif: draggableWidget.gif),
+      //           ),
+      //         ),
+      //       ],
+      //     ),
+      //   );
+      //   break;
 
       case ItemType.video:
         overlayWidget = const Center();
@@ -252,10 +251,11 @@ class DraggableWidget extends StatelessWidget {
     if (draggableWidget.type == ItemType.text) {
       top = size.width / 1.3;
       return top;
-    } else if (draggableWidget.type == ItemType.gif) {
-      top = size.width / 1.3;
-      return top;
     }
+    // else if (draggableWidget.type == ItemType.gif) {
+    //   top = size.width / 1.3;
+    //   return top;
+    // }
   }
 
   _deleteScale() {
@@ -263,10 +263,10 @@ class DraggableWidget extends StatelessWidget {
     if (draggableWidget.type == ItemType.text) {
       scale = 0.4;
       return scale;
-    } else if (draggableWidget.type == ItemType.gif) {
-      scale = 0.3;
-      return scale;
-    }
+    } //else if (draggableWidget.type == ItemType.gif) {
+    //   scale = 0.3;
+    //   return scale;
+    // }
   }
 
   /// onTap text
