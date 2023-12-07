@@ -38,6 +38,9 @@ dependencies:
   permission_handler: ^9.2.0
   # toast
   fluttertoast: ^8.0.9
+
+dependency_overrides:
+  image_picker: ^1.0.4
   
 dev_dependencies:
   flutter_test:
