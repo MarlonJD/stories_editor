@@ -41,6 +41,7 @@ dependencies:
 
 dependency_overrides:
   image_picker: ^1.0.4
+  http: 1.1.0
   
 dev_dependencies:
   flutter_test:
