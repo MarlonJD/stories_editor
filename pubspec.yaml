@@ -30,7 +30,7 @@ dependencies:
   modal_gif_picker:
     git:
       url: https://github.com/MarlonJD/modal_gif_picker
-      ref: main
+      ref: ca846e6a4c0f8d88f9df0b26dc866900c72700d9
   # painting
   perfect_freehand: ^1.0.4
   # animations
