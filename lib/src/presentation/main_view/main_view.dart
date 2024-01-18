@@ -3,10 +3,10 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:photo_view/photo_view.dart';
@@ -449,107 +449,143 @@ class _MainViewState extends State<MainView> {
                                 shareButtonText: widget.shareButtonText,
                                 contentKey: contentKey,
                                 onTapGalleryButton: () async {
-                                  return Get.dialog(AlertDialog(
-                                    backgroundColor: Theme.of(context)
-                                        .colorScheme
-                                        .background,
-                                    shape: const RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(6))),
-                                    content: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: <Widget>[
-                                        GestureDetector(
-                                          onTap: () {
-                                            Navigator.pop(context);
-                                          },
-                                          child: const Align(
-                                              alignment: Alignment.topRight,
-                                              child: Icon(
-                                                Icons.close,
-                                                size: 24,
-                                              )),
-                                        ),
-                                        InkWell(
-                                          onTap: () async {
-                                            ImagePicker()
-                                                .pickImage(
-                                                    source: ImageSource.gallery)
-                                                .then((image) {
-                                              setState(() {
-                                                controlNotifier.mediaPath =
-                                                    image!.path;
-                                                if (controlNotifier
-                                                    .mediaPath.isNotEmpty) {
-                                                  itemProvider.draggableWidget
-                                                      .insert(
-                                                          0,
-                                                          EditableItem()
-                                                            ..type =
-                                                                ItemType.image
-                                                            ..position =
-                                                                const Offset(
-                                                                    0.0, 0));
-                                                }
-                                              });
-                                              Navigator.pop(context, image);
-                                            });
-                                          },
-                                          child: Container(
-                                            child: ListTile(
-                                                title: Text("Gallery".tr),
-                                                leading: Icon(
-                                                  Icons.image,
-                                                  color: Theme.of(context)
-                                                      .colorScheme
-                                                      .primary,
-                                                )),
-                                          ),
-                                        ),
-                                        Container(
-                                          width: 200,
-                                          height: 1,
-                                          color: Colors.black12,
-                                        ),
-                                        InkWell(
-                                          onTap: () async {
-                                            ImagePicker()
-                                                .pickImage(
-                                                    source: ImageSource.camera)
-                                                .then((image) {
-                                              setState(() {
-                                                controlNotifier.mediaPath =
-                                                    image!.path;
-                                                if (controlNotifier
-                                                    .mediaPath.isNotEmpty) {
-                                                  itemProvider.draggableWidget
-                                                      .insert(
-                                                          0,
-                                                          EditableItem()
-                                                            ..type =
-                                                                ItemType.image
-                                                            ..position =
-                                                                const Offset(
-                                                                    0.0, 0));
-                                                }
-                                              });
-                                              Navigator.pop(context, image);
-                                            });
-                                          },
-                                          child: Container(
-                                            child: ListTile(
-                                                title: Text("Camera".tr),
-                                                leading: Icon(
-                                                  Icons.camera,
-                                                  color: Theme.of(context)
-                                                      .colorScheme
-                                                      .primary,
-                                                )),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ));
+                                  ImagePicker()
+                                      .pickImage(source: ImageSource.gallery)
+                                      .then((image) {
+                                    setState(() {
+                                      controlNotifier.mediaPath = image!.path;
+                                      if (controlNotifier
+                                          .mediaPath.isNotEmpty) {
+                                        itemProvider.draggableWidget.insert(
+                                            0,
+                                            EditableItem()
+                                              ..type = ItemType.image
+                                              ..position =
+                                                  const Offset(0.0, 0));
+                                      }
+                                    });
+                                  });
+                                  // await showDialog(
+                                  //     context: context,
+                                  //     builder: (context) {
+                                  //       return AlertDialog(
+                                  //         backgroundColor: Theme.of(context)
+                                  //             .colorScheme
+                                  //             .background,
+                                  //         shape: const RoundedRectangleBorder(
+                                  //             borderRadius: BorderRadius.all(
+                                  //                 Radius.circular(6))),
+                                  //         content: Column(
+                                  //           mainAxisSize: MainAxisSize.min,
+                                  //           children: <Widget>[
+                                  //             GestureDetector(
+                                  //               onTap: () {
+                                  //                 Navigator.pop(context);
+                                  //               },
+                                  //               child: const Align(
+                                  //                   alignment:
+                                  //                       Alignment.topRight,
+                                  //                   child: Icon(
+                                  //                     Icons.close,
+                                  //                     size: 24,
+                                  //                   )),
+                                  //             ),
+                                  //             InkWell(
+                                  //               onTap: () async {
+                                  //                 ImagePicker()
+                                  //                     .pickImage(
+                                  //                         source:
+                                  //                             ImageSource.gallery)
+                                  //                     .then((image) {
+                                  //                   setState(() {
+                                  //                     controlNotifier
+                                  //                             .mediaPath =
+                                  //                         image!.path;
+                                  //                     if (controlNotifier
+                                  //                         .mediaPath
+                                  //                         .isNotEmpty) {
+                                  //                       itemProvider
+                                  //                           .draggableWidget
+                                  //                           .insert(
+                                  //                               0,
+                                  //                               EditableItem()
+                                  //                                 ..type =
+                                  //                                     ItemType
+                                  //                                         .image
+                                  //                                 ..position =
+                                  //                                     const Offset(
+                                  //                                         0.0,
+                                  //                                         0));
+                                  //                     }
+                                  //                   });
+                                  //                   Navigator.pop(
+                                  //                       context, image);
+                                  //                 });
+                                  //               },
+                                  //               child: Container(
+                                  //                 child: ListTile(
+                                  //                     title: Text("Gallery".tr()),
+                                  //                     leading: Icon(
+                                  //                       Icons.image,
+                                  //                       color: Theme.of(context)
+                                  //                           .colorScheme
+                                  //                           .primary,
+                                  //                     )),
+                                  //               ),
+                                  //             ),
+                                  //             Container(
+                                  //               width: 200,
+                                  //               height: 1,
+                                  //               color: Colors.black12,
+                                  //             ),
+                                  //             InkWell(
+                                  //               onTap: () async {
+                                  //                 ImagePicker()
+                                  //                     .pickVideo(
+                                  //                         source:
+                                  //                             ImageSource.gallery)
+                                  //                     .then((image) {
+                                  //                   setState(() {
+                                  //                     controlNotifier
+                                  //                             .mediaPath =
+                                  //                         image!.path;
+                                  //                     if (controlNotifier
+                                  //                         .mediaPath
+                                  //                         .isNotEmpty) {
+                                  //                       itemProvider
+                                  //                           .draggableWidget
+                                  //                           .insert(
+                                  //                               0,
+                                  //                               EditableItem()
+                                  //                                 ..type =
+                                  //                                     ItemType
+                                  //                                         .video
+                                  //                                 ..position =
+                                  //                                     const Offset(
+                                  //                                         0.0,
+                                  //                                         0));
+                                  //                     }
+                                  //                   });
+                                  //                   Navigator.pop(
+                                  //                       context, image);
+                                  //                 });
+                                  //               },
+                                  //               child: Container(
+                                  //                 child: ListTile(
+                                  //                     title: Text("Video".tr()),
+                                  //                     leading: Icon(
+                                  //                       Icons.video_collection,
+                                  //                       color: Theme.of(context)
+                                  //                           .colorScheme
+                                  //                           .primary,
+                                  //                     )),
+                                  //               ),
+                                  //             ),
+                                  //           ],
+                                  //         ),
+                                  //       );
+                                  //     });
+
                                   // PickedFile image =
                                   //     await ImagePickerGC.pickImage(
                                   //   enableCloseButton: true,

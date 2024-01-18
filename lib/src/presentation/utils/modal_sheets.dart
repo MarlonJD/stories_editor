@@ -1,5 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:stories_editor/src/domain/models/editable_items.dart';
 import 'package:stories_editor/src/domain/providers/notifiers/control_provider.dart';
@@ -90,7 +90,7 @@ Future<bool> exitDialog({
                   ),
                   Text(
                     discardDialogDetailText ??
-                        "If you go back now, you'll lose all the edits you've made.",
+                        "If you go back now, you'll lose all the edits you've made.".tr(),
                     style: const TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.w400,
@@ -144,20 +144,20 @@ Future<bool> exitDialog({
                           _dispose(
                               context: context,
                               message: saveDraftAlertSavedText ??
-                                  'Successfully saved');
+                                  'Successfully saved'.tr());
                         } else {
                           _dispose(
                               context: context,
-                              message: saveDraftAlertErrorText ?? 'Error');
+                              message: saveDraftAlertErrorText ?? 'Error'.tr());
                         }
                       } else {
                         _dispose(
                             context: context,
-                            message: saveDraftAlertEmptyText ?? 'Draft Empty');
+                            message: saveDraftAlertEmptyText ?? 'Draft Empty'.tr());
                       }
                     },
                     child: Text(
-                      discardDialogSaveDraftButtonText ?? 'Save Draft',
+                      discardDialogSaveDraftButtonText ?? 'Save Draft'.tr(),
                       style: const TextStyle(
                           fontSize: 16,
                           color: Colors.white,
@@ -215,10 +215,8 @@ _resetDefaults({required BuildContext context}) {
 
 _dispose({required context, required message}) {
   _resetDefaults(context: context);
-  Get.snackbar(
-    message,
-    message,
-    backgroundColor: Colors.blueAccent.withOpacity(0.3),
-  );
+  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(message),
+      backgroundColor: Colors.blueAccent.withOpacity(0.3)));
   Navigator.of(context).pop(true);
 }

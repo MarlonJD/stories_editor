@@ -1,5 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:stories_editor/src/domain/providers/notifiers/control_provider.dart';
 import 'package:stories_editor/src/domain/providers/notifiers/draggable_widget_notifier.dart';
@@ -131,18 +131,19 @@ class _TopToolsState extends State<TopTools> {
                               context: context,
                               saveToGallery: true);
                           if (response) {
-                            Get.snackbar(
-                              widget.saveDraftAlertSavedText ??
-                                  'Successfully saved',
-                              '',
-                              backgroundColor: Colors.green.withOpacity(0.8),
-                            );
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                    content: Text(widget.saveDraftAlertSavedText ??
+                                        'Successfully saved'.tr()),
+                                    backgroundColor:
+                                        Colors.green.withOpacity(0.8)));
                           } else {
-                            Get.snackbar(
-                              widget.saveDraftAlertErrorText ?? 'Error',
-                              '',
-                              backgroundColor: Colors.red.withOpacity(0.8),
-                            );
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                    content: Text(widget.saveDraftAlertErrorText ??
+                                        'Error'.tr()),
+                                    backgroundColor:
+                                        Colors.red.withOpacity(0.8)));
                           }
                         }
                       }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:stories_editor/src/domain/providers/notifiers/control_provider.dart';
 import 'package:stories_editor/src/domain/providers/notifiers/draggable_widget_notifier.dart';
@@ -146,11 +145,11 @@ class _BottomToolsState extends State<BottomTools> {
                           String pngUri;
                           if (paintingNotifier.lines.isEmpty &&
                               itemNotifier.draggableWidget.isEmpty) {
-                            Get.snackbar(
-                                widget.errorText ?? "Error",
-                                widget.emptyNoticeText ??
-                                    "Empty notice cannot be published",
-                                backgroundColor: Colors.red.withOpacity(0.3));
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                    content: Text(widget.errorText ??
+                                        "Error: Empty notice cannot be published"),
+                                    backgroundColor: Colors.red.withOpacity(0.3)));
                           } else if (paintingNotifier.lines.isNotEmpty ||
                               itemNotifier.draggableWidget.isNotEmpty) {
                             for (var element in itemNotifier.draggableWidget) {

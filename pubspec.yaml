@@ -10,7 +10,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  easy_localization: ^3.0.1
+  flutter_localizations:
+    sdk: flutter
   # state management
   provider: ^6.0.2
   # image
@@ -41,6 +43,7 @@ dependencies:
   permission_handler: ^10.2.0
   # toast
   fluttertoast: ^8.0.9
+  loader_overlay: ^4.0.0
 
 dependency_overrides:
   image_picker: ^1.0.4
