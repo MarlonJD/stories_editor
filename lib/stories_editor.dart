@@ -126,7 +126,6 @@ class StoriesEditor extends StatefulWidget {
 class _StoriesEditorState extends State<StoriesEditor> {
   @override
   void initState() {
-    Paint.enableDithering = true;
     WidgetsFlutterBinding.ensureInitialized();
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
