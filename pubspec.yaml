@@ -10,14 +10,14 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  easy_localization: ^3.0.1
+  easy_localization: ^3.0.5
   flutter_localizations:
     sdk: flutter
   # state management
-  provider: ^6.0.2
+  provider: ^6.1.2
   # image
-  image: ^4.0.0
-  path_provider: ^2.0.8
+  image: ^4.1.7
+  path_provider: ^2.1.2
   photo_view: ^0.14.0
   # with this ref fix `Looking up a deactivated widget's ancestor is unsafe`.
   #photo_view:
@@ -26,7 +26,7 @@ dependencies:
   #    ref: 8156907eecfa812b181a5a729d790f6d399f311b
   image_gallery_saver: ^2.0.3
   # position
-  align_positioned: ^3.0.0
+  align_positioned: ^4.0.1
   # own packages
   gallery_media_picker: ^0.0.7
   modal_gif_picker:
@@ -34,25 +34,25 @@ dependencies:
       url: https://github.com/MarlonJD/modal_gif_picker
       ref: ca846e6a4c0f8d88f9df0b26dc866900c72700d9
   # painting
-  perfect_freehand: ^1.0.4
+  perfect_freehand: ^2.3.2
   # animations
-  animated_text_kit: ^4.2.1
+  animated_text_kit: ^4.2.2
   # rendering
-  ffmpeg_kit_flutter_min_gpl: ^4.5.1
+  ffmpeg_kit_flutter_min_gpl: ^6.0.3
   # permission
-  permission_handler: ^10.2.0
+  permission_handler: ^11.3.0
   # toast
-  fluttertoast: ^8.0.9
+  fluttertoast: ^8.2.4
   loader_overlay: ^4.0.0
 
 dependency_overrides:
-  image_picker: ^1.0.4
-  http: 1.1.0
+  image_picker: ^1.0.7
+  http: 1.2.1
   
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^1.0.0
+  flutter_lints: ^3.0.1
 
 
 flutter:
