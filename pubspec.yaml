@@ -24,7 +24,10 @@ dependencies:
   #  git:
   #    url: https://github.com/bluefireteam/photo_view
   #    ref: 8156907eecfa812b181a5a729d790f6d399f311b
-  image_gallery_saver: ^2.0.3
+  image_gallery_saver:
+    git:
+      url: https://github.com/MarlonJD/image_gallery_saver
+      ref: 012c48023306f0332f7d363df045f4005f1861cf
   # position
   align_positioned: ^4.0.1
   # own packages
