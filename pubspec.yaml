@@ -45,7 +45,6 @@ dependencies:
   # permission
   permission_handler: ^11.3.0
   # toast
-  fluttertoast: ^8.2.4
   fluttertoast:
     git:
       url: https://github.com/MarlonJD/FlutterToast
