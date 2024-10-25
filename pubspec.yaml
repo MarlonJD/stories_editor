@@ -27,7 +27,7 @@ dependencies:
   image_gallery_saver:
     git:
       url: https://github.com/MarlonJD/image_gallery_saver
-      ref: 012c48023306f0332f7d363df045f4005f1861cf
+      ref: e7972639ef2837b0d78e5720fe911e64b0975ba2
   # position
   align_positioned: ^4.0.1
   # own packages
@@ -46,7 +46,10 @@ dependencies:
   permission_handler: ^11.3.0
   # toast
   fluttertoast: ^8.2.4
-  loader_overlay: ^4.0.0
+  fluttertoast:
+    git:
+      url: https://github.com/MarlonJD/FlutterToast
+      ref: e108ae4fcf94c011640ac490652a405a73fa5209
 
 dependency_overrides:
   image_picker: ^1.0.7
