@@ -48,7 +48,7 @@ dependencies:
   fluttertoast:
     git:
       url: https://github.com/MarlonJD/FlutterToast
-      ref: e108ae4fcf94c011640ac490652a405a73fa5209
+      ref: ac29e14f4e7aa32adfa222b6354759e36488a1a2
 
 dependency_overrides:
   image_picker: ^1.0.7
