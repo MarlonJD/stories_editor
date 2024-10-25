@@ -22,7 +22,10 @@ dependencies:
   #  git:
   #    url: https://github.com/bluefireteam/photo_view
   #    ref: 8156907eecfa812b181a5a729d790f6d399f311b
-  image_gallery_saver: ^1.7.1
+  image_gallery_saver: 
+    git:
+      url: https://github.com/MarlonJD/image_gallery_saver
+      ref: e7972639ef2837b0d78e5720fe911e64b0975ba2
   # position
   align_positioned: ^3.0.0
   # own packages
@@ -40,7 +43,10 @@ dependencies:
   # permission
   permission_handler: ^10.2.0
   # toast
-  fluttertoast: ^8.0.9
+  fluttertoast:
+    git:
+      url: https://github.com/MarlonJD/FlutterToast
+      ref: e108ae4fcf94c011640ac490652a405a73fa5209
 
 dependency_overrides:
   image_picker: ^1.0.4
